@@ -1,11 +1,12 @@
 
-
+from configManage import ConfigManager
 from controller import Controller
 from flask import Flask
 import os
+configManage = ConfigManager()
 app = Flask(__name__)
 app.secret_key = os.urandom(24)
-controller = Controller(isDebug=True)
+controller = Controller(configManage.isDebug)
 
 @app.route('/select/<phone>',methods = ['get'])
 def select(phone):

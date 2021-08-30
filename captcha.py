@@ -37,14 +37,13 @@ class Captcha:
             "softwareSecret": self.id,
             "username": self.user,
             "password": self.pwd,
-            "captchaData": base64.b64encode(imageData),
+            "captchaData": str(base64.b64encode(imageData), encoding = "utf8"),
             "captchaType": 1013,
             "captchaMinLength": 5,
             "captchaMaxLength": 5
         }
 
         r = requests.request('POST', api_post_url, json=data, headers=headers)
-
         try:
             js = json.loads(r.text)
             return js['data']['recognition'],r.text

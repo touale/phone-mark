@@ -56,6 +56,7 @@ class Controller:
 
     def select(self,phone):
         for i in range(self.maxSelect):
+            res = ''
             try:
                 res = self.selectIn(phone)
             except:
